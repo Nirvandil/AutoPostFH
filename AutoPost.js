@@ -13,11 +13,16 @@ by.value = 'Пока';
 by.addEventListener('click', function() { addReply(1); } );
 var message = document.getElementsByName('message')[0];
 if (message) {
-    message.parentElement.parentElement().appendChild(hello);
-    message.parentElement.parentElement().appendChild(by);
+    var placeForButtons = message.parentElement.parentElement;
+    placeForButtons.appendChild(hello);
+    placeForButtons.appendChild(by);
     message.addEventListener('keydown', function (event){
-        if (event.ctrlKey && event.keyCode == 13)
-            buttonAddMessage.click();
+        if (event.ctrlKey && event.keyCode == 13) {
+            if (messageInputForm.value == '')
+                alert("Нельзя отправить пустое сообщение!");
+            else
+                buttonAddMessage.click();
+        }
     })
 }
 function addReply(string_num) {
