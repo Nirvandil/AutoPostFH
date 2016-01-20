@@ -13,13 +13,10 @@ by.value = 'Пока';
 by.addEventListener('click', function() { addReply(1); } );
 var message = document.getElementsByName('message')[0];
 if (message) {
-    message.parentElement.parentElement.appendChild(hello);
-    message.parentElement.parentElement.appendChild(by);
+    message.parentElement.parentElement().appendChild(hello);
+    message.parentElement.parentElement().appendChild(by);
     message.addEventListener('keydown', function (event){
         if (event.ctrlKey && event.keyCode == 13)
-        if (message.value == "")
-            alert("Нельзя отправить пустое сообщение!");
-        else
             buttonAddMessage.click();
     })
 }
