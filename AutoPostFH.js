@@ -2,9 +2,10 @@ var messageStrings = ['Здравствуйте. \nСейчас посмотри
 'проблем или если будет нужна наша помощь - обращайтесь.', 'Пароль, пользователя root, который' +
 ' вы указали при создании тикета, не подходит. Укажите, пожалуйста, корректный (если вы его не ' +
 'изменяли, он может быть найден в письме с доступами, ' +
-'которое приходило вам после заказа сервера'];
+'которое приходило вам после заказа сервера)'];
 var messageInputForm = document.getElementsByName('message')[0];
 var buttonAddMessage = document.querySelectorAll('input[value="Добавить"]')[0];
+var buttonChangeMessage = document.querySelectorAll('input[value="Изменить"]')[0];
 var hello = document.createElement('input');
 hello.type = 'button';
 hello.value = 'Прив';
@@ -30,6 +31,11 @@ if (message) {
             else
                 buttonAddMessage.click();
         }
+    })
+}
+if (buttonChangeMessage){
+    message.addEventListener('keydown', function(event){
+        
     })
 }
 function addReply(string_num) {
