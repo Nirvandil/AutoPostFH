@@ -13,16 +13,16 @@ var by = document.createElement('input');
 by.type = 'button';
 by.value = 'Пока';
 by.addEventListener('click', function() { addReply(1); } );
-var passIncorect = document.createElement('input');
-passIncorect.type = 'button';
-passIncorect.value = 'Pass';
-passIncorect.addEventListener('click', function(){addReply(2)});
+var passIncorrect = document.createElement('input');
+passIncorrect.type = 'button';
+passIncorrect.value = 'Pass';
+passIncorrect.addEventListener('click', function(){addReply(2)});
 var message = document.getElementsByName('message')[0];
 if (message) {
     var placeForButtons = message.parentElement.parentElement;
     placeForButtons.appendChild(hello);
     placeForButtons.appendChild(by);
-    placeForButtons.appendChild(passIncorect);
+    placeForButtons.appendChild(passIncorrect);
     message.addEventListener('keydown', function (event){
         if (event.ctrlKey && event.keyCode == 13) {
             if (messageInputForm.value == '')
