@@ -9,12 +9,15 @@ var buttonChangeMessage = document.querySelectorAll('input[value="Изменит
 var hello = document.createElement('input');
 var by = document.createElement('input');
 var passIncorrect = document.createElement('input');
+var test = document.createElement('input');
 hello.type = 'button';
 hello.value = 'Прив';
 by.type = 'button';
 by.value = 'Пока';
 passIncorrect.type = 'button';
 passIncorrect.value = 'Pass';
+test.type = 'button';
+test.value = 'test';
 hello.addEventListener('click', function () {
     addReply(0);
 });
@@ -26,10 +29,21 @@ passIncorrect.addEventListener('click', function () {
 });
 var message = document.getElementsByName('message')[0];
 if (message) {
-    var placeForButtons = message.parentElement.parentElement;
-    placeForButtons.appendChild(hello);
-    placeForButtons.appendChild(by);
-    placeForButtons.appendChild(passIncorrect);
+    var table  = document.getElementsByTagName('tbody')[4];
+    var buttonsRow = document.createElement('tr');
+    table.insertBefore(buttonsRow, table.rows[table.rows.length]);
+    var cellHello = document.createElement('td');
+    var cellPass = document.createElement('td');
+    var cellBy = document.createElement('td');
+    var cellTest = document.createElement('td');
+    buttonsRow.appendChild(cellHello);
+    buttonsRow.appendChild(cellPass);
+    buttonsRow.appendChild(cellBy);
+    buttonsRow.appendChild(cellTest);
+    cellHello.appendChild(hello);
+    cellPass.appendChild(passIncorrect);
+    cellBy.appendChild(by);
+    cellTest.appendChild(test);
     message.addEventListener('keydown', function (event) {
         if (event.ctrlKey && event.keyCode == 13) {
             if (messageInputForm.value == '')
