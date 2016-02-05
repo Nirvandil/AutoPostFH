@@ -45,7 +45,7 @@ function addReply(string_num) {
     buttonAddMessage.click();
 }
 function addButton(name, answerNumber){
-    var addedButton = document.createElement(name);
+    var addedButton = document.createElement('input');
     addedButton.type='button';
     addedButton.value=name;
     addedButton.addEventListener('click', function(){
