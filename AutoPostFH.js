@@ -5,27 +5,10 @@ var messageStrings = ['Здравствуйте. \nСейчас посмотри
 var messageInputForm = document.getElementsByName('message')[0];
 var buttonAddMessage = document.querySelectorAll('input[value="Добавить"]')[0];
 var buttonChangeMessage = document.querySelectorAll('input[value="Изменить"]')[0];
-var hello = document.createElement('input');
-var by = document.createElement('input');
-var passIncorrect = document.createElement('input');
-var test = document.createElement('input');
-hello.type = 'button';
-hello.value = 'Прив';
-by.type = 'button';
-by.value = 'Пока';
-passIncorrect.type = 'button';
-passIncorrect.value = 'Pass';
-test.type = 'button';
-test.value = 'test';
-hello.addEventListener('click', function () {
-    addReply(0);
-});
-by.addEventListener('click', function () {
-    addReply(1);
-});
-passIncorrect.addEventListener('click', function () {
-    addReply(2)
-});
+var hello = addButton('Прив', 0);
+var by = addButton('Пока', 1);
+var passIncorrect = addButton('Pass', 2);
+var test = addButton('test', 3);
 var message = document.getElementsByName('message')[0];
 if (message) {
     var table  = document.getElementsByTagName('tbody')[4];
@@ -60,4 +43,13 @@ if (buttonChangeMessage) {
 function addReply(string_num) {
     messageInputForm.value = messageStrings[string_num];
     buttonAddMessage.click();
+}
+function addButton(name, answerNumber){
+    var addedButton = document.createElement(name);
+    addedButton.type='button';
+    addedButton.value=name;
+    addedButton.addEventListener('click', function(){
+        addReply(answerNumber)
+    });
+    return addedButton;
 }
