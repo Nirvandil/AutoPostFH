@@ -20,15 +20,17 @@ if (message) {
     var cellPass = document.createElement('td');
     var cellBy = document.createElement('td');
     var cellDcNet = document.createElement('td');
-    //Next 7 lines - special for scrolling down
-    var scrollButton = document.createElement('input');
-    scrollButton.type = 'button';
-    scrollButton.value = 'scroll down';
-    scrollButton.addEventListener('click', function(){
-        window.scrollTo(0,document.body.scrollHeight);
-    });
-    var tables = document.getElementsByTagName('table');
-    tables[0].appendChild(scrollButton);
+    if (document.body.scrollHeight > 1800) {
+        //Next 7 lines - special for scrolling down
+        var scrollButton = document.createElement('input');
+        scrollButton.type = 'button';
+        scrollButton.value = 'scroll down';
+        scrollButton.addEventListener('click', function () {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        var tables = document.getElementsByTagName('table');
+        tables[0].appendChild(scrollButton);
+    }
     buttonsRow.appendChild(cellHello);
     buttonsRow.appendChild(cellPass);
     buttonsRow.appendChild(cellBy);
