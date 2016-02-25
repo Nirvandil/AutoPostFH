@@ -73,6 +73,8 @@ if (message) {
             if (messageInputForm.value == '')
                 alert('\u041d\u0435\u043b\u044c\u0437\u044f \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043f\u0443\u0441\u0442\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435!');
             else
+                var textMessage = messageInputForm.value ;
+                textMessage.replace();
                 buttonAddMessage.click();
         }
     })
