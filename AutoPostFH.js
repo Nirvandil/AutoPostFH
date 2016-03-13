@@ -31,16 +31,20 @@ if (message) {
     var address = orderText.match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/);
 
     if (address) {
-        var toPanelBtn = document.createElement('input');
-        toPanelBtn.type = 'button';
-        toPanelBtn.value = 'Go to panel';
-        toPanelBtn.addEventListener('click', function () {
-            if(orderText.contains('\u041f\u0430\u043d\u0435\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0445\u043e\u0441\u0442\u0438\u043d\u0433\u043e\u043c / VESTA'))
+        var toVesta = document.createElement('input');
+        toVesta.type = 'button';
+        toVesta.value = 'To VESTA';
+        toVesta.addEventListener('click', function () {
                 window.open("https://"+address[0]+":8083");
-            else
-                window.open("https://"+address[0]+":1500/ispmgr");
         });
-        tables[0].appendChild(toPanelBtn);
+        var toIsp = document.createElement('input');
+        toIsp.type = 'button' ;
+        toIsp.value = 'To ISP' ;
+        toIsp.addEventListener('click', function(){
+            window.open("https://"+address[0]+":1500/ispmgr");
+        });
+        tables[0].appendChild(toVesta);
+        tables[0].appendChild(toIsp);
     }
     //\u041a\u043e\u043d\u0435\u0446 \u043a\u043d\u043e\u043f\u043a\u0438 \u0432 \u043f\u0430\u043d\u0435\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f
     var table = document.getElementsByTagName('tbody') [4];
