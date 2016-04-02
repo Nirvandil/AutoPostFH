@@ -3,7 +3,7 @@ var buttonAddMessage = document.querySelectorAll('input[value="Добавить"
 var message = document.getElementsByName('message') [0];
 if (message) {
     var tables = document.getElementsByTagName('table');
-    var orderText = ((document.getElementsByTagName('td') [7].textContent.search('Заказ')) > 0)?document.getElementsByTagName('td')[7].textContent:document.getElementsByTagName('td')[6].textContent;
+    var orderText = ((document.getElementsByTagName('td') [7].textContent.search('Заказ')) >= 0)?document.getElementsByTagName('td')[7].textContent:document.getElementsByTagName('td')[6].textContent;
     var address = orderText.match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/);
     //aimRow - place (tr) where we'll place our new menu and buttons
     var aimRow = document.getElementsByTagName('tbody') [4].children[4];
