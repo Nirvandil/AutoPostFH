@@ -15,7 +15,7 @@ if (message) {
         if (event.ctrlKey && event.keyCode == 13) {
             if (message.value == '')
                 alert('Нельзя добавить пустое сообщение!');
-            else if (!buttonChangeMessage)
+            else
                 buttonAddMessage.click();
         }
     })
