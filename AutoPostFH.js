@@ -2,6 +2,8 @@ document.body.style.background = 'lightgrey';
 var buttonAddMessage = document.querySelectorAll('input[value="Добавить"]') [0];
 var message = document.getElementsByName('message') [0];
 if (message) {
+    message.style.width = 695;
+    message.style.height = 230;
     var tables = document.getElementsByTagName('table');
     var orderText = ((document.getElementsByTagName('td') [7].textContent.search('Заказ')) >= 0)?document.getElementsByTagName('td')[7].textContent:document.getElementsByTagName('td')[6].textContent;
     var address = orderText.match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/);
