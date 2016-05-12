@@ -31,27 +31,38 @@ function createMenu()
     var passOption = document.createElement('option');
     var byOption = document.createElement('option');
     var dcTroublesOption = document.createElement('option');
+    var changedIPOption = document.createElement('option');
     helloOption.value = 'Здравствуйте. Сейчас посмотрим.';
     passOption.value = 'Пароль пользователя root, который вы указали при создании тикета, не подходит, укажите, пожалуйста, корректный. \n' +
         'Если вы его не изменяли, он может быть найден в письме, которое приходило вам после заказа сервера.';
     byOption.value = 'Пожалуйста, в случае возникновения проблем или если будет нужна наша помощь - обращайтесь.' ;
     dcTroublesOption.value = 'Здравствуйте. На данный момент имеются проблемы с сетью на уровне датацентра. Над их устранением уже работают.\n' +
         'Приносим извинения за доставленные неудобства.' ;
+    changedIPOption.value = 'Готово. Ваш новый IP-адрес - \n' +
+        'Также выслал на почту обновлённые ссылки на панели управления (поля с паролями пустые, т.к. пароли не изменялись).\n' +
+        'Домены, делегированные на наши серверы имён, уже отдаются с новым адресом, например -  .\n' +
+        'Если где-либо это ещё не так, нужно просто дождаться обновления кэша DNS. \n' +
+        'Если у Вас есть домены, делегированные на сторонние серверы имён, не забудьте сменить для них А-записи. \n' +
+        'Проверьте, пожалуйста, работу сайтов';
     helloOption.text = 'Привет';
     passOption.text = 'Пароль';
     byOption.text = 'Пока';
     dcTroublesOption.text = 'Сеть';
+    changedIPOption.text = 'IP changed';
     dropDownMenu.appendChild(helloOption);
     dropDownMenu.appendChild(passOption);
     dropDownMenu.appendChild(byOption);
     dropDownMenu.appendChild(dcTroublesOption);
+    dropDownMenu.appendChild(changedIPOption);
     return dropDownMenu;
 }
 function postAnswer ()
 {
     var menu = document.getElementById('dropDownMenu');
+    //TWO BAD CODE LINES!!!
     message.value = menu.options[menu.selectedIndex].value;
-    buttonAddMessage.click();
+    if (menu.options[menu.selectedIndex].text != 'IP change')
+        buttonAddMessage.click();
 }
 //Add Menu to page and button with listener to post
 function addMenuToPage(aimRow)
