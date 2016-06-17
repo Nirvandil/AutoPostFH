@@ -84,8 +84,15 @@ function addToPanelButtons(hasAddress)
         toIsp.addEventListener('click', function(){
             window.open("https://"+address[0]+":1500/ispmgr");
         });
+        var copyIP = document.createElement('input');
+        copyIP.type = 'button';
+        copyIP.value = 'Copy IP';
+        copyIP.addEventListener('click', function(){
+            copyTextToClipboard(address[0]);
+        });
         tables[0].appendChild(toVesta);
         tables[0].appendChild(toIsp);
+        tables[0].appendChild(copyIP);
     }
 }
 function addScrollDownButton()
@@ -110,4 +117,28 @@ function addPostButtonToPage(aimRow)
         postAnswer();
     });
     aimRow.appendChild(addPost);
+}
+function copyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = 0;
+    textArea.style.left = 0;
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = 0;
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copying text command was ' + msg);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+    }
+    document.body.removeChild(textArea);
 }
