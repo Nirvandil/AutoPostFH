@@ -13,6 +13,7 @@ void 0!==c?null===c?void r.removeAttr(a,b):e&&"set"in e&&void 0!==(d=e.set(a,c,b
 document.body.style.background = 'lightgrey';
 var buttonAddMessage = document.querySelectorAll('input[value="Добавить"]') [0];
 var message = document.getElementsByName('message') [0];
+buttonAddMessage.addEventListener("click", checkTicketState);
 if (message) {
     message.style.width = 695;
     message.style.height = 230;
@@ -30,7 +31,8 @@ if (message) {
             if (message.value == '')
                 alert('Нельзя добавить пустое сообщение!');
             else
-                buttonAddMessage.click();
+                if (checkTicketState())
+                    buttonAddMessage.click();
         }
     })
 }
@@ -68,9 +70,22 @@ function createMenu()
     dropDownMenu.appendChild(changedIPOption);
     return dropDownMenu;
 }
+function checkTicketState(){
+    var newTicket = getFreshTicketBody();
+    var trCount = (newTicket.match(/<tr/g) || []).length;
+    if ($("tr").length < trCount) {
+        copyTextToClipboard(message.value);
+        message.value='';
+        alert("Тикет изменился с момента открытия. Введённый в поле для ответа текст в буфере обмена.");
+        location.reload();
+        return false
+    }
+    return true
+}
 function postAnswer ()
 {
     var menu = document.getElementById('dropDownMenu');
+    if(!checkTicketState()) return;
     //TWO BAD CODE LINES!!!
     message.value = menu.options[menu.selectedIndex].value;
     if (menu.options[menu.selectedIndex].text != 'IP change')
@@ -153,4 +168,10 @@ function copyTextToClipboard(text) {
         console.log('Oops, unable to copy');
     }
     document.body.removeChild(textArea);
+}
+function getFreshTicketBody() {
+  return $.ajax({
+  url: window.location.href,
+  async: false
+}).responseText;
 }
